@@ -1,0 +1,12 @@
+MainWindow
+  id: simpleWindow
+  size: 400 400
+  !text: tr('testwindow')
+
+  Button
+    id: jumpButton
+    !text: tr('OK!')
+    anchors.bottom: parent.bottom
+    anchors.right: parent.right
+    width: 90
+    @onClick: modules.client_testwindow.jumpButton()

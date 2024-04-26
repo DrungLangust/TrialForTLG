@@ -1,0 +1,9 @@
+Module
+  name: client_testwindow
+  description: testwindow
+  author: d
+  website: https://github.com/edubart/otclient
+  scripts: [ testwindow ]
+  sandboxed: true
+  @onLoad: init()
+  @onUnload: terminate()
