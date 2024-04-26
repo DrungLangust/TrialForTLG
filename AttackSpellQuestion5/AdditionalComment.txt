@@ -1,0 +1,4 @@
+In addition to the spell script itself, entries were added on both the server and client sides to add the spell to the spell list and display it on the client.
+Two videos are attached. All because when using a wider (but reliable according to the video) spell area, it did not manifest immediately and was not centered around the player. Only when moving could the effects be seen. 
+
+In the situation with a smaller area, the spell's display and positioning were correct.
