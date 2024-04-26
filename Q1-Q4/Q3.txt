@@ -1,0 +1,44 @@
+
+Q3 - Fix or improve the name and the implementation of the below method
+
+ 
+
+function do_sth_with_PlayerParty(playerId, membername)
+
+	player = Player(playerId)
+
+	local party = player:getParty()
+
+	for k,v in pairs(party:getMembers()) do
+		if v == Player(membername) then
+			party:removeMember(Player(membername))
+		end
+	end
+	
+end
+
+A3
+function removePlayerFromParty(playerId, membername)
+	local player = Player(playerId)
+	local party = player:getParty()
+
+	if not party then
+		//Additional check if player in party
+		return "Player not in a party"
+	end
+	//Additional check to avoid for cycle
+	//Get the member object 
+  local member = party:getMember(memberName)
+  if not member then
+    //Handle case where member is not found in the party
+    return "Member not found in party"
+  end
+
+	//Thanks to additional checks, we can remove a group member instantly without loops and without accessing the container each time.
+	party:removeMember(member)
+  
+    // success message
+	return "Player removed from party"
+
+end
+end

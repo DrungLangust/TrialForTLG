@@ -1,0 +1,30 @@
+Q1 - Fix or improve the implementation of the below methods
+
+local function releaseStorage(player)
+	player:setStorageValue(1000, -1)
+end
+
+function onLogout(player)
+	if player:getStorageValue(1000) == 1 then
+		addEvent(releaseStorage, 1000, player)
+	end
+	return true
+end
+
+A1
+
+local STORAGE_KEY = 1000
+
+local function releaseStorage(player)
+    if player and player:isPlayer() then //Check that player exists
+        player:setStorageValue(STORAGE_KEY, nil) // You can also use 0. If -1 is used in the framework and database as a value for empty, you can leave it as -1. You can also create a local variable similar to STORAGE_KEY with a clear name for understanding the code or future changes. 
+    else
+        print("Error releasing storage: player is nil or not a valid player.") // Additional error and log handle for better debaging
+    end
+end
+function onLogout(player)
+  if player:getStorageValue(STORAGE_KEY) == true then //Check for existing storage. Changed 1 to true for better understanding
+    addEvent(releaseStorage, STORAGE_KEY, player) 
+  end
+  return true
+end
